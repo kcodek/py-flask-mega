@@ -25,8 +25,6 @@
 * {{}}, {% %}  - dynamic content, loops, conditionals
 * template inheritance - {% extends ... %} {% block content %}{% endblock %}
 
-
-
 #### 03.Web Forms
 * Flask-WTF extension - is a thin wrapper around the WTForms package that nicely integrates it with Flask. $ pip install flask-wtf
 * The most basic option to specify configuration options is to  define your variables as keys in app.config, which uses a dictionary style to work with variables - `app.config['SECRET_KEY'] = 'you-will-never-guess'`
@@ -60,8 +58,51 @@
     -  The way the application deals with invalid form input is by re-displaying the form, to let the user make the necessary corrections. The form validators generate these descriptive error messages already, so all that is missing is some additional logic in the template to render them
 
 * Generating Links
-    - Instead of writing links directly, Flask provides a function called url_for(), which generates URLs using its internal mapping of URLs to view functions. 
+    - Instead of writing links directly, Flask provides a function called `url_for()`, which generates URLs using its internal mapping of URLs to view functions. 
     - The argument to url_for() is the endpoint name, which is the name of the view function.  For example, url_for('login') returns /login, and url_for('index') return '/index
+
+
+
+#### 04.Database
+* The nice thing about `SQLAlchemy` is that it is an ORM not for one, but for many relational databases. SQLAlchemy supports a long list of database engines, including the popular MySQL, PostgreSQL and SQLite. 
+
+* RDBMS are centered around structured data, so when the structure changes the data that is already in the database needs to be migrated to the modified structure.
+
+* The Flask-SQLAlchemy extension takes the location of the application's database from the SQLALCHEMY_DATABASE_URI configuration variable.
+
+* import the module &  add a 'db' object that represents the database . Same thing for 'migrate'
+
+* The data that is stored in the database will be represented by a collection of classes, usually called database models. The ORM layer within SQLAlchemy will do the translations required to map objects created from these classes into rows in the proper database tables.
+
+* The 'User' class created above inherits from db.Model, a base class for all models from Flask-SQLAlchemy. This class defines several fields as class variables. 
+Fields are created as instances of the `db.Column` class, which takes the field type as an argument, plus other optional arguments that, for example, allow me to indicate which fields are `unique` and `indexed`, which is important so that database searches are efficient.
+
+* The `__repr__` method tells Python how to print objects of this class, which is going to be useful for debugging. 
+
+* The model class created in the previous section defines the initial database structure (or schema) for this application. But as the application continues to grow, there is going to be a need change that structure, very likely to add new things, but sometimes also to modify or remove items. Alembic (the migration framework used by Flask-Migrate) will make these schema changes in a way that does not require the database to be recreated from scratch.
+
+* To accomplish this seemingly difficult task, Alembic maintains a migration repository, which is a directory in which it stores its migration scripts. Each time a change is made to the database schema, a migration script is added to the repository with the details of the change. To apply the migrations to a database, these migration scripts are executed in the sequence they were created.
+    $ flask db init
+
+* The `flask db migrate` command does not make any changes to the database, it just generates the migration script. To apply the changes to the database, the `flask db upgrad`e command must be used.
+
+* But with database migration support, after you modify the models in your application you generate a new migration script (`flask db migrate`), you probably review it to make sure the automatic generation did the right thing, and then apply the changes to your development database (`flask db upgrade`). You will add the migration script to source control and commit it. `flask db downgrade` command, which undoes the last migration
+
+*   1. A new database migration needs to be generated - `$ flask db migrate -m "posts table"`
+    2. And the migration needs to be applied to the database - `$ flask db upgrade`
+    3. If you are storing your project in source control, also remember to add the new migration script to it.
+
+
+
+* All models have a query attribute that is the entry point to run database queries. 
+    - `all` - returns all elements of that class, User.query.all()
+    - `get` - User.query.get(1)
+
+* `$ flask shell` - the command pre-imports the application instance.
+    The nice thing about flask shell is not that it pre-imports app, but that you can configure a "shell context", which is a list of other symbols to pre-import.
+
+*   The `app.shell_context_processor` decorator registers the function as a shell context function. When the flask shell command runs, it will invoke this function and register the items returned by it in the shell session. The reason the function returns a dictionary and not a list is that for each item you have to also provide a name under which it will be referenced in the shell, which is given by the dictionary keys.
+
 
 #### ToDo: 
 

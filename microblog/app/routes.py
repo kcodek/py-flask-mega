@@ -29,6 +29,3 @@ def login():
         # return redirect('index')
         return redirect(url_for('index'))
     return render_template('login.html', title='Sign In', form=form)
-# def login():
-#     form = LoginForm()
-#     return render_template('login.html', title='Sign In', form=form)
