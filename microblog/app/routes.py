@@ -1,4 +1,4 @@
-from app import app
+from app import app  # imports the app variable that is a member of the app package
 from flask import render_template, flash, redirect, url_for
 from app.forms import LoginForm
 
