@@ -104,6 +104,15 @@ Fields are created as instances of the `db.Column` class, which takes the field 
 *   The `app.shell_context_processor` decorator registers the function as a shell context function. When the flask shell command runs, it will invoke this function and register the items returned by it in the shell session. The reason the function returns a dictionary and not a list is that for each item you have to also provide a name under which it will be referenced in the shell, which is given by the dictionary keys.
 
 #### 05.User Logins
+*  Flask-Login provides a mixin class called UserMixin that includes generic implementation of four required items -  is_authenticated, is_active , is_anonymous, get_id()
 
-#### ToDo: 
+* Flask-Login keeps track of the logged in user by storing its unique identifier in Flask's user session, a storage space assigned to each user who connects to the application.
+
+* The user loader is registered with Flask-Login with the `@login.user_loader` decorator. 
+
+* The way Flask-Login protects a view function against anonymous users is with a decorator called `@login_required`.
+
+#### Miscellaneous
+1. Werkzeug is a comprehensive WSGI(Web Server Gateway Interface) web application library.  Flask wraps Werkzeug, using it to handle the details of WSGI while providing more structure and patterns for defining powerful applications.
+
 
