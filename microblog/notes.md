@@ -112,8 +112,16 @@ Fields are created as instances of the `db.Column` class, which takes the field 
 
 * The way Flask-Login protects a view function against anonymous users is with a decorator called `@login_required`.
 
-#### 05.Profile page & avatars
+#### 06.Profile page & avatars
 * The `@before_request` decorator from Flask register the decorated function to be executed right before the view function.
+
+#### 07.Error Handling
+* To run in debug mode - `$ export FLASK_DEBUG=1`. reloader is enabled in debug mode
+* To declare a custom error handler, the @errorhandler decorator is used. I'm going to put my
+* Flask uses Python's logging package to write its logs, and this package already has the ability to send logs by email
+* using SMTP debugging server - This fake email server accepts emails but instead of sending them it prints them to console
+    `(venv) $ python -m smtpd -n -c DebuggingServer localhost:8025`
+* To enable a file based log handler,  RotatingFileHandler needs to be attached to the application logger, in a similar way to the email handler.
 
 #### Miscellaneous
 1. Werkzeug is a comprehensive WSGI(Web Server Gateway Interface) web application library.  Flask wraps Werkzeug, using it to handle the details of WSGI while providing more structure and patterns for defining powerful applications.
