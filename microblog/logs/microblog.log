@@ -75,3 +75,27 @@ sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed
 [parameters: ('peter', 'Jackson is my last name', 4)]
 (Background on this error at: http://sqlalche.me/e/gkpj)
 2019-10-23 11:45:58,965 INFO: Microblog startup [in /Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/__init__.py:46]
+2019-10-23 11:52:19,187 INFO: Microblog startup [in /Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/__init__.py:46]
+2019-10-23 12:11:27,470 INFO: Microblog startup [in /Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/__init__.py:46]
+2019-10-23 12:21:17,707 INFO: Microblog startup [in /Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/__init__.py:46]
+2019-10-23 12:22:11,342 ERROR: Exception on /login [POST] [in /Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/routes.py", line 38, in login
+    if user is None or not user.check_password(form.password.data):
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/models.py", line 36, in check_password
+    return check_password_hash(self.password_hash, password)
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/werkzeug/security.py", line 218, in check_password_hash
+    if pwhash.count("$") < 2:
+AttributeError: 'NoneType' object has no attribute 'count'

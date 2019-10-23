@@ -123,6 +123,9 @@ Fields are created as instances of the `db.Column` class, which takes the field 
     `(venv) $ python -m smtpd -n -c DebuggingServer localhost:8025`
 * To enable a file based log handler,  RotatingFileHandler needs to be attached to the application logger, in a similar way to the email handler.
 
+#### 08.Followers
+* Python includes a very useful `unittest` package that makes it easy to write and execute unit tests.
+
 #### Miscellaneous
 1. Werkzeug is a comprehensive WSGI(Web Server Gateway Interface) web application library.  Flask wraps Werkzeug, using it to handle the details of WSGI while providing more structure and patterns for defining powerful applications.
 
