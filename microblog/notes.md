@@ -112,6 +112,9 @@ Fields are created as instances of the `db.Column` class, which takes the field 
 
 * The way Flask-Login protects a view function against anonymous users is with a decorator called `@login_required`.
 
+#### 05.Profile page & avatars
+* The `@before_request` decorator from Flask register the decorated function to be executed right before the view function.
+
 #### Miscellaneous
 1. Werkzeug is a comprehensive WSGI(Web Server Gateway Interface) web application library.  Flask wraps Werkzeug, using it to handle the details of WSGI while providing more structure and patterns for defining powerful applications.
 
