@@ -126,6 +126,13 @@ Fields are created as instances of the `db.Column` class, which takes the field 
 #### 08.Followers
 * Python includes a very useful `unittest` package that makes it easy to write and execute unit tests.
 
+#### 08.Pagination
+* Post/Redirect/Get (PRG) is a web development design pattern that allows for the page shown to the user after a form submission to be reloaded, shared or bookmarked without certain ill effects such as submitting the form another time.
+
+* The paginate method can be called on any query object from Flask-SQLAlchemy. It takes three arguments: page number(starting from 1), no.of items per page, error flag
+
+
+
 #### Miscellaneous
 1. Werkzeug is a comprehensive WSGI(Web Server Gateway Interface) web application library.  Flask wraps Werkzeug, using it to handle the details of WSGI while providing more structure and patterns for defining powerful applications.
 
