@@ -146,6 +146,20 @@ Fields are created as instances of the `db.Column` class, which takes the field 
 
 * When working with threads there is an important design aspect of Flask that needs to be kept in mind. Flask uses contexts to avoid having to pass arguments across functions. I'm not going to go into a lot of detail on this, but know that there are two types of contexts, the `application context` and the `request context`. In most cases, these contexts are automatically managed by the framework, but when the application starts custom threads, contexts for those threads may need to be manually created.
 
+#### 11.Facelift 
+*  Flask-Bootstrap provides a ready to use base template that has the Bootstrap framework installed. With the extension initialized, a bootstrap/base.html template becomes available, and can be referenced from application templates with the extends clause.
+
+#### 12.Dates and Times 
+
+~~~py
+from datetime import datetime
+str(datetime.now())
+str(datetime.utcnow())
+~~~
+* https://momentjs.com/
+
+
+
 #### Miscellaneous
 1. Werkzeug is a comprehensive WSGI(Web Server Gateway Interface) web application library.  Flask wraps Werkzeug, using it to handle the details of WSGI while providing more structure and patterns for defining powerful applications.
 
