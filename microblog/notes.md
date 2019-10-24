@@ -126,12 +126,25 @@ Fields are created as instances of the `db.Column` class, which takes the field 
 #### 08.Followers
 * Python includes a very useful `unittest` package that makes it easy to write and execute unit tests.
 
-#### 08.Pagination
+#### 09.Pagination
 * Post/Redirect/Get (PRG) is a web development design pattern that allows for the page shown to the user after a form submission to be reloaded, shared or bookmarked without certain ill effects such as submitting the form another time.
 
 * The paginate method can be called on any query object from Flask-SQLAlchemy. It takes three arguments: page number(starting from 1), no.of items per page, error flag
 
+#### 10.Email
+* Flask-Mail Usage
+~~~py 
+    $ flask shell
+    >>> from flask_mail import Message
+    >>> from app import mail
+    >>> msg = Message('test subject', sender=app.config['ADMINS'][0],
+    ... recipients=['your-email@example.com'])
+    >>> msg.body = 'text body'
+    >>> msg.html = '<h1>HTML body</h1>'
+    >>> mail.send(msg)
+~~~
 
+* When working with threads there is an important design aspect of Flask that needs to be kept in mind. Flask uses contexts to avoid having to pass arguments across functions. I'm not going to go into a lot of detail on this, but know that there are two types of contexts, the `application context` and the `request context`. In most cases, these contexts are automatically managed by the framework, but when the application starts custom threads, contexts for those threads may need to be manually created.
 
 #### Miscellaneous
 1. Werkzeug is a comprehensive WSGI(Web Server Gateway Interface) web application library.  Flask wraps Werkzeug, using it to handle the details of WSGI while providing more structure and patterns for defining powerful applications.
