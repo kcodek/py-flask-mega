@@ -165,10 +165,25 @@ str(datetime.utcnow())
 #### 13.I18n and L10n
 * The Babel instance provides a localeselector decorator. The decorated function is invoked for each request to select a language translation to use for that request
 * Once you have the application with all the _() and _l() in place, you can use the `pybabel` command to extract them to a .pot file, which stands for portable object template. This is a text file that includes all the texts that were marked as needing translation. The purpose of this file is to serve as a template to create translation files for each language.
+* extract all text to .pot file - `(venv) $ pybabel extract -F babel.cfg -k _l -o messages.pot .`
+* create a translation for each language that will be supported in addition to the base one,
+    `(venv) $ pybabel init -i messages.pot -d app/translations -l es`
+     creating catalog app/translations/es/LC_MESSAGES/messages.po based on messages.pot
+* To use the translated texts, the file needs to be compiled -
+   `(venv) $ pybabel compile -d app/translations`
+    compiling catalog app/translations/es/LC_MESSAGES/messages.po to
+    app/translations/es/LC_MESSAGES/messages.mo
+* updating the translations
+    `(venv) $ pybabel extract -F babel.cfg -k _l -o messages.pot .`
+    `(venv) $ pybabel update -i messages.pot -d app/translations`
+* Flask-Babel returns the selected language and locale for a given request via the get_locale() function, 
 
+* Command-Line Enhancements
+    - `flask run`, `flask shell`, and several `flask db` sub-commands provided by the Flask-Migrate extension. It is actually easy to add application-specific commands to flask as well.
+    - This command uses the `@click.argument` decorator to define the language code. Click passes the value provided in the command to the handler function as an argument & this arg is incorporated in the command `init`
+    `flask translate --help`, `flask translate init es`, `flask translate update`, `flask translate compile`
 
 
 #### Miscellaneous
 1. Werkzeug is a comprehensive WSGI(Web Server Gateway Interface) web application library.  Flask wraps Werkzeug, using it to handle the details of WSGI while providing more structure and patterns for defining powerful applications.
-
 
