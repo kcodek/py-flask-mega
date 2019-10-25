@@ -183,6 +183,14 @@ str(datetime.utcnow())
     - This command uses the `@click.argument` decorator to define the language code. Click passes the value provided in the command to the handler function as an argument & this arg is incorporated in the command `init`
     `flask translate --help`, `flask translate init es`, `flask translate update`, `flask translate compile`
 
+#### 14.AJAX
+* In a strict client-side application the entire application is downloaded to the client with the initial page request, and then the application runs entirely on the client, only contacting the server to retrieve or store data and making dynamic changes to the appearance of that first and only web page. This type of applications are called Single Page Applications or SPAs.
+* language translation -  `pip install guess_language-spirit`
+
+* using a third-party translation service 
+    - The two major translation services are Google Cloud Translation API and Microsoft Translator Text API. Both are paid services, but the Microsoft offering has an entry level option for low volume of translations that is free(needs an azure account). Google offered a free translation service in the past but today, even the lowest service tier is paid.
+
+
 
 #### Miscellaneous
 1. Werkzeug is a comprehensive WSGI(Web Server Gateway Interface) web application library.  Flask wraps Werkzeug, using it to handle the details of WSGI while providing more structure and patterns for defining powerful applications.
