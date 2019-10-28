@@ -17,7 +17,7 @@
     - .flaskenv  
         - FLASK_APP=microblog.py
 
-#### 02.Templates
+#### 02. Templates
 * Creating mock objects is a useful technique that allows you to concentrate on one part of the application without having to worry about other parts of the system that don't exist yet. 
     -   user = {'username': 'Miguel'}
 * jinja2
@@ -25,7 +25,7 @@
 * {{}}, {% %}  - dynamic content, loops, conditionals
 * template inheritance - {% extends ... %} {% block content %}{% endblock %}
 
-#### 03.Web Forms
+#### 03. Web Forms
 * Flask-WTF extension - is a thin wrapper around the WTForms package that nicely integrates it with Flask. $ pip install flask-wtf
 * The most basic option to specify configuration options is to  define your variables as keys in app.config, which uses a dictionary style to work with variables - `app.config['SECRET_KEY'] = 'you-will-never-guess'`
 * The configuration settings are defined as class variables inside the Config class. Allows to keep configuration in a separate file (Separation of concerns)
@@ -63,7 +63,7 @@
 
 
 
-#### 04.Database
+#### 04. Database
 * The nice thing about `SQLAlchemy` is that it is an ORM not for one, but for many relational databases. SQLAlchemy supports a long list of database engines, including the popular MySQL, PostgreSQL and SQLite. 
 
 * RDBMS are centered around structured data, so when the structure changes the data that is already in the database needs to be migrated to the modified structure.
@@ -103,7 +103,7 @@ Fields are created as instances of the `db.Column` class, which takes the field 
 
 *   The `app.shell_context_processor` decorator registers the function as a shell context function. When the flask shell command runs, it will invoke this function and register the items returned by it in the shell session. The reason the function returns a dictionary and not a list is that for each item you have to also provide a name under which it will be referenced in the shell, which is given by the dictionary keys.
 
-#### 05.User Logins
+#### 05. User Logins
 *  Flask-Login provides a mixin class called UserMixin that includes generic implementation of four required items -  is_authenticated, is_active , is_anonymous, get_id()
 
 * Flask-Login keeps track of the logged in user by storing its unique identifier in Flask's user session, a storage space assigned to each user who connects to the application.
@@ -116,10 +116,10 @@ Fields are created as instances of the `db.Column` class, which takes the field 
 * login_user will register the user as logged in, so that means that any future pages the user navigates to will have the current_user variable set to that user.
 * If the user navigates to /index, for example, the @login_required decorator will intercept the request and respond with a redirect to /login but it will add a query string argument to this URL, making the complete redirect URL /login?next=/index. The next query string argument is set to the original URL, so the application can use that to redirect back after login.
 
-#### 06.Profile page & avatars
+#### 06. Profile page & avatars
 * The `@before_request` decorator from Flask register the decorated function to be executed right before the view function.
 
-#### 07.Error Handling
+#### 07. Error Handling
 * To run in debug mode - `$ export FLASK_DEBUG=1`. reloader is enabled in debug mode
 * To declare a custom error handler, the @errorhandler decorator is used. I'm going to put my
 * Flask uses Python's logging package to write its logs, and this package already has the ability to send logs by email
@@ -127,15 +127,15 @@ Fields are created as instances of the `db.Column` class, which takes the field 
     `(venv) $ python -m smtpd -n -c DebuggingServer localhost:8025`
 * To enable a file based log handler,  RotatingFileHandler needs to be attached to the application logger, in a similar way to the email handler.
 
-#### 08.Followers
+#### 08. Followers
 * Python includes a very useful `unittest` package that makes it easy to write and execute unit tests.
 
-#### 09.Pagination
+#### 09. Pagination
 * Post/Redirect/Get (PRG) is a web development design pattern that allows for the page shown to the user after a form submission to be reloaded, shared or bookmarked without certain ill effects such as submitting the form another time.
 
 * The paginate method can be called on any query object from Flask-SQLAlchemy. It takes three arguments: page number(starting from 1), no.of items per page, error flag
 
-#### 10.Email
+#### 10. Email
 * Flask-Mail Usage
 ~~~py 
     $ flask shell
@@ -150,10 +150,10 @@ Fields are created as instances of the `db.Column` class, which takes the field 
 
 * When working with threads there is an important design aspect of Flask that needs to be kept in mind. Flask uses contexts to avoid having to pass arguments across functions. I'm not going to go into a lot of detail on this, but know that there are two types of contexts, the `application context` and the `request context`. In most cases, these contexts are automatically managed by the framework, but when the application starts custom threads, contexts for those threads may need to be manually created.
 
-#### 11.Facelift 
+#### 11. Facelift 
 *  Flask-Bootstrap provides a ready to use base template that has the Bootstrap framework installed. With the extension initialized, a bootstrap/base.html template becomes available, and can be referenced from application templates with the extends clause.
 
-#### 12.Dates and Times 
+#### 12. Dates and Times 
 
 ~~~py
 from datetime import datetime
@@ -162,7 +162,7 @@ str(datetime.utcnow())
 ~~~
 * https://momentjs.com/
 
-#### 13.I18n and L10n
+#### 13. I18n and L10n
 * The Babel instance provides a localeselector decorator. The decorated function is invoked for each request to select a language translation to use for that request
 * Once you have the application with all the _() and _l() in place, you can use the `pybabel` command to extract them to a .pot file, which stands for portable object template. This is a text file that includes all the texts that were marked as needing translation. The purpose of this file is to serve as a template to create translation files for each language.
 * extract all text to .pot file - `(venv) $ pybabel extract -F babel.cfg -k _l -o messages.pot .`
@@ -183,14 +183,14 @@ str(datetime.utcnow())
     - This command uses the `@click.argument` decorator to define the language code. Click passes the value provided in the command to the handler function as an argument & this arg is incorporated in the command `init`
     `flask translate --help`, `flask translate init es`, `flask translate update`, `flask translate compile`
 
-#### 14.AJAX
+#### 14. AJAX
 * In a strict client-side application the entire application is downloaded to the client with the initial page request, and then the application runs entirely on the client, only contacting the server to retrieve or store data and making dynamic changes to the appearance of that first and only web page. This type of applications are called Single Page Applications or SPAs.
 * language translation -  `pip install guess_language-spirit`
 
 * using a third-party translation service 
     - The two major translation services are Google Cloud Translation API and Microsoft Translator Text API. Both are paid services, but the Microsoft offering has an entry level option for low volume of translations that is free(needs an azure account). Google offered a free translation service in the past but today, even the lowest service tier is paid.
 
-#### 15.A better application structure
+#### 15. A better application structure
 * The blueprints feature of Flask helps achieve a more practical organization that makes it easier to reuse code.
 * A better solution would be to not use a global variable for the application, and instead use an application factory function to create the function at runtime. 
 * This would be a function that accepts a configuration object as an argument, and returns a Flask application instance, configured with those settings.
@@ -217,6 +217,10 @@ str(datetime.utcnow())
 
 * .env file
     - The .env file can be used for all the configuration-time variables, but it cannot be used for Flask's FLASK_APP and FLASK_DEBUG environment variables, because these are needed very early in the application bootstrap process, before the application instance and its configuration object exist.
+
+#### 16. Full-Text Search
+* Elasticsearch is a full-text search engine. Data in Elasticsearch is written to indexes. Unlike a relational database, the data is just a JSON object.
+* 
 
 
 #### Miscellaneous
