@@ -1,17 +1,13 @@
-from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
-from app import db
-from flask_login import UserMixin
-from app import login
 from hashlib import md5
 from time import time
+from flask import current_app
+from flask_login import UserMixin
+from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
-from app import app
+from app import db, login
 
 
-# association table
-'''Since this is an auxiliary table that has no data other than the foreign keys,
- it is created without an associated model class.'''
 followers = db.Table(
     'followers',
     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
@@ -27,12 +23,14 @@ class User(UserMixin, db.Model):
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
-    # many-to-many relationship
     followed = db.relationship(
         'User', secondary=followers,
         primaryjoin=(followers.c.follower_id == id),
         secondaryjoin=(followers.c.followed_id == id),
         backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
+
+    def __repr__(self):
+        return '<User {}>'.format(self.username)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -42,8 +40,8 @@ class User(UserMixin, db.Model):
 
     def avatar(self, size):
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
-        # return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(digest, size)
-        return f'https://www.gravatar.com/avatar/{digest}?d=identicon&s={size}'
+        return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
+            digest, size)
 
     def follow(self, user):
         if not self.is_following(user):
@@ -67,19 +65,22 @@ class User(UserMixin, db.Model):
     def get_reset_password_token(self, expires_in=600):
         return jwt.encode(
             {'reset_password': self.id, 'exp': time() + expires_in},
-            app.config['SECRET_KEY'], algorithm='HS256').decode('utf-8')
+            current_app.config['SECRET_KEY'],
+            algorithm='HS256').decode('utf-8')
 
     @staticmethod
     def verify_reset_password_token(token):
         try:
-            id = jwt.decode(token, app.config['SECRET_KEY'],
+            id = jwt.decode(token, current_app.config['SECRET_KEY'],
                             algorithms=['HS256'])['reset_password']
         except:
             return
         return User.query.get(id)
 
-    def __repr__(self):
-        return '<User {}>'.format(self.username)
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
 
 class Post(db.Model):
@@ -91,12 +92,3 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
-
-
-'''
-Flask-login the extension expects that the application will configure
- a user loader function, that can be called to load a user given the ID.
-'''
-@login.user_loader
-def load_user(id):
-    return User.query.get(int(id))

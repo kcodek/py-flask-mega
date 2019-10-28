@@ -190,6 +190,33 @@ str(datetime.utcnow())
 * using a third-party translation service 
     - The two major translation services are Google Cloud Translation API and Microsoft Translator Text API. Both are paid services, but the Microsoft offering has an entry level option for low volume of translations that is free(needs an azure account). Google offered a free translation service in the past but today, even the lowest service tier is paid.
 
+#### 15.A better application structure
+* The blueprints feature of Flask helps achieve a more practical organization that makes it easier to reuse code.
+* A better solution would be to not use a global variable for the application, and instead use an application factory function to create the function at runtime. 
+* This would be a function that accepts a configuration object as an argument, and returns a Flask application instance, configured with those settings.
+* In Flask, a `blueprint` is a logical structure that represents a subset of the application. A blueprint can include elements such as routes, view functions, forms, templates and static files. If you write your blueprint in a separate Python package, then you have a component that encapsulates the elements related to specific feature of the application.
+* The contents of a blueprint are initially in a dormant state. To associate these elements, the blueprint needs to be registered with the application. During the registration, all the elements that were added to the blueprint are passed on to the application. So you can think of a blueprint as a temporary storage for application functionality that helps in organizing your code.
+
+* The creation of a blueprint is fairly similar to the creation of an application. This is done in the ___init__.py module of the blueprint package
+
+
+* BluePrints
+    - Error Handling Blueprint - encapsulates the support for error handlers.  
+    - Authentication Blueprint - The register_blueprint() call in this case has an extra argument, url_prefix. This is entirely optional, but Flask gives you the option to attach a blueprint under a URL prefix, so any routes defined in the blueprint get this prefix in their URLs. In many cases this is useful as a sort of "namespacing" that keeps all the routes in the blueprint separated from other routes in the application or other blueprints
+    - Main Applicationi Blueprint
+
+* The Application Factory Pattern
+    - create_app() that constructs a Flask application instance, and eliminate the global variable.     
+
+* The `current_app` variable that Flask provides is a special "context" variable that Flask initializes with the application before it dispatches a request. You have already seen another context variable before, the `g` variable in which I'm storing the current locale. These two, along with Flask-Login's `current_user` and a few others you haven't seen yet, are somewhat "magical" variables, in that they work like global variables, but are only accessible during the handling of a request, and only in the thread that is handling it.
+
+* tests 
+    - Before invoking your view functions, Flask pushes an application context, which brings `current_app` and `g` to life. When the request is complete, the context is removed, along with these variables. For the db.create_all() call to work in the unit testing setUp() method, Push an application context for the application instance created, and in that way, db.create_all() can use current_app.config to know where is the database. Then in the tearDown() method pop the context to reset everything to a clean state.
+
+* The `application context` is one of two contexts that Flask uses. There is also a `request context`, which is more specific, as it applies to a request. When a request context is activated right before a request is handled, Flask's request and session variables become available, as well as Flask-Login's current_user.
+
+* .env file
+    - The .env file can be used for all the configuration-time variables, but it cannot be used for Flask's FLASK_APP and FLASK_DEBUG environment variables, because these are needed very early in the application bootstrap process, before the application instance and its configuration object exist.
 
 
 #### Miscellaneous
