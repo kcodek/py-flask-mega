@@ -1,90 +1,73 @@
-2019-10-28 14:54:21,670 ERROR: Exception on /search [GET] [in /Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py:1891]
+2020-01-16 21:31:01,584 ERROR: Exception on /search [GET] [in /Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/flask/app.py:1890]
 Traceback (most recent call last):
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/urllib3/connection.py", line 156, in _new_conn
+    conn = connection.create_connection(
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/urllib3/util/connection.py", line 84, in create_connection
+    raise err
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/urllib3/util/connection.py", line 74, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/elasticsearch/connection/http_urllib3.py", line 237, in perform_request
+    response = self.pool.urlopen(
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/urllib3/connectionpool.py", line 719, in urlopen
+    retries = retries.increment(
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/urllib3/util/retry.py", line 376, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/urllib3/packages/six.py", line 735, in reraise
     raise value
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/urllib3/connectionpool.py", line 665, in urlopen
+    httplib_response = self._make_request(
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/urllib3/connectionpool.py", line 387, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/http/client.py", line 1230, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/http/client.py", line 1276, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/http/client.py", line 1225, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/http/client.py", line 1004, in _send_output
+    self.send(msg)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/http/client.py", line 944, in send
+    self.connect()
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/urllib3/connection.py", line 184, in connect
+    conn = self._new_conn()
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/urllib3/connection.py", line 168, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x10eff4550>: Failed to establish a new connection: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/main/routes.py", line 144, in search
-    current_app.config['POSTS_PER_PAGE'])
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/main/routes.py", line 143, in search
+    posts, total = Post.search(g.search_form.q.data, page,
   File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/models.py", line 15, in search
     ids, total = query_index(cls.__tablename__, expression, page, per_page)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/search.py", line 26, in query_index
-    'from': (page - 1) * per_page, 'size': per_page})
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/elasticsearch/client/utils.py", line 84, in _wrapped
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/search.py", line 22, in query_index
+    search = current_app.elasticsearch.search(
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/elasticsearch/client/utils.py", line 84, in _wrapped
     return func(*args, params=params, **kwargs)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/elasticsearch/client/__init__.py", line 805, in search
-    "GET", _make_path(index, "_search"), params=params, body=body
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/elasticsearch/transport.py", line 350, in perform_request
-    timeout=timeout,
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/elasticsearch/connection/http_urllib3.py", line 257, in perform_request
-    self._raise_error(response.status, raw_data)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/elasticsearch/connection/base.py", line 182, in _raise_error
-    status_code, error_message, additional_info
-elasticsearch.exceptions.NotFoundError: NotFoundError(404, 'index_not_found_exception', 'no such index', post, index_or_alias)
-2019-10-28 14:59:50,208 INFO: Microblog startup [in /Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/__init__.py:77]
-2019-10-28 14:59:51,059 ERROR: Exception on /search [GET] [in /Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/main/routes.py", line 144, in search
-    current_app.config['POSTS_PER_PAGE'])
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/models.py", line 15, in search
-    ids, total = query_index(cls.__tablename__, expression, page, per_page)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/search.py", line 26, in query_index
-    'from': (page - 1) * per_page, 'size': per_page})
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/elasticsearch/client/utils.py", line 84, in _wrapped
-    return func(*args, params=params, **kwargs)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/elasticsearch/client/__init__.py", line 805, in search
-    "GET", _make_path(index, "_search"), params=params, body=body
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/elasticsearch/transport.py", line 350, in perform_request
-    timeout=timeout,
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/elasticsearch/connection/http_urllib3.py", line 257, in perform_request
-    self._raise_error(response.status, raw_data)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/elasticsearch/connection/base.py", line 182, in _raise_error
-    status_code, error_message, additional_info
-elasticsearch.exceptions.NotFoundError: NotFoundError(404, 'index_not_found_exception', 'no such index', post, index_or_alias)
-2019-10-28 15:00:12,704 ERROR: Exception on /search [GET] [in /Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/main/routes.py", line 144, in search
-    current_app.config['POSTS_PER_PAGE'])
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/models.py", line 15, in search
-    ids, total = query_index(cls.__tablename__, expression, page, per_page)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/search.py", line 28, in query_index
-    return ids, search['hits']['total']['value']
-TypeError: 'int' object is not subscriptable
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/elasticsearch/client/__init__.py", line 804, in search
+    return self.transport.perform_request(
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/elasticsearch/transport.py", line 343, in perform_request
+    status, headers_response, data = connection.perform_request(
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/elasticsearch/connection/http_urllib3.py", line 250, in perform_request
+    raise ConnectionError("N/A", str(e), e)
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x10eff4550>: Failed to establish a new connection: [Errno 61] Connection refused) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x10eff4550>: Failed to establish a new connection: [Errno 61] Connection refused)
