@@ -1,4 +1,4 @@
-2020-01-16 21:31:01,584 ERROR: Exception on /search [GET] [in /Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/flask/app.py:1890]
+2020-01-20 09:41:37,281 ERROR: Exception on /search [GET] [in /Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/flask/app.py:1890]
 Traceback (most recent call last):
   File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/urllib3/connection.py", line 156, in _new_conn
     conn = connection.create_connection(
@@ -37,7 +37,7 @@ Traceback (most recent call last):
     conn = self._new_conn()
   File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/urllib3/connection.py", line 168, in _new_conn
     raise NewConnectionError(
-urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x10eff4550>: Failed to establish a new connection: [Errno 61] Connection refused
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1053b52b0>: Failed to establish a new connection: [Errno 61] Connection refused
 
 During handling of the above exception, another exception occurred:
 
@@ -56,7 +56,7 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/main/routes.py", line 143, in search
+  File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/main/routes.py", line 150, in search
     posts, total = Post.search(g.search_form.q.data, page,
   File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/app/models.py", line 15, in search
     ids, total = query_index(cls.__tablename__, expression, page, per_page)
@@ -70,4 +70,4 @@ Traceback (most recent call last):
     status, headers_response, data = connection.perform_request(
   File "/Users/kishored/coding/python-coding/flask-trailers/py-flask-mega/microblog/venv/lib/python3.8/site-packages/elasticsearch/connection/http_urllib3.py", line 250, in perform_request
     raise ConnectionError("N/A", str(e), e)
-elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x10eff4550>: Failed to establish a new connection: [Errno 61] Connection refused) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x10eff4550>: Failed to establish a new connection: [Errno 61] Connection refused)
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x1053b52b0>: Failed to establish a new connection: [Errno 61] Connection refused) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x1053b52b0>: Failed to establish a new connection: [Errno 61] Connection refused)
